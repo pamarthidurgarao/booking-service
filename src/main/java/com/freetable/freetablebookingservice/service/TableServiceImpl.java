@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Circle;
+import org.springframework.data.geo.Distance;
+import org.springframework.data.geo.Metrics;
+import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
 import com.freetable.freetablebookingservice.entity.TableEntity;
@@ -36,8 +39,11 @@ public class TableServiceImpl implements TableService {
 	}
 
 	@Override
-	public List<TableEntity> search(double lat, double lan, int distance) {
-		Circle c = new Circle(lat, lan, distance);
+	public List<TableEntity> search(double lat, double lan, double distance) {
+		Point point = new Point(lat, lan);
+		Distance distance2 = new Distance(distance);
+		distance2.in(Metrics.KILOMETERS);
+		Circle c = new Circle(point, distance2);
 		return repository.findByPositionWithin(c);
 	}
 

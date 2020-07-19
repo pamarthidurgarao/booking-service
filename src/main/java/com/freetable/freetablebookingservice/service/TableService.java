@@ -14,6 +14,6 @@ public interface TableService {
 
 	void delet(String id);
 
-	List<TableEntity> search(double lat, double lan, int distance);
+	List<TableEntity> search(double lat, double lan, double distance);
 
 }

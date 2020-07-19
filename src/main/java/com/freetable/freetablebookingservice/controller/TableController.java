@@ -44,7 +44,7 @@ public class TableController {
 
 	@GetMapping("search")
 	public ResponseEntity<List<TableEntity>> search(@RequestParam Double lat, @RequestParam Double lang,
-			@RequestParam Integer distance) {
+			@RequestParam Double distance) {
 
 		return new ResponseEntity<List<TableEntity>>(service.search(lat, lang, distance), HttpStatus.OK);
 	}
