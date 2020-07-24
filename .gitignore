@@ -24,7 +24,7 @@ nbdist/
 .nb-gradle/
 .mvn/**
 
-maps/node_modules
-maps/package-lock.json
-maps/dist/**
+maps1/node_modules
+maps1/package-lock.json
+maps1/dist/**
 logs/**
