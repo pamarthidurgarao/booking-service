@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freetable-booking-service
+  labels:
+    app: freetable-booking-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: freetable-booking-service
+  template:
+    metadata:
+      labels:
+        app: freetable-booking-service
+    spec:
+      containers:
+        - name: freetable-booking-service
+          image: docker.io/pamarthid/free-table-booking-service:0.0.1-SNAPSHOT
+          ports:
+            - name: http
+              containerPort: 8102
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 600m
+              memory: 900Mi
+            requests:
+              cpu: 300m
+              memory: 400Mi
